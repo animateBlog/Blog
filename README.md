@@ -26,13 +26,11 @@
 |-|-|-|-|
 |u_id|u_name|u_pwd|u_email|
 
-### writeinfo
+### essayinfo
 
 字段：
 |序号|标题|描述|内容txt路径|图片路径|
 |-|-|-|-|-|
-|w_id|w_tit|w_des|w_con|w_img|
+|e_id|e_title|e_describe|e_content|e_img|
 
 ***
-
-## 
