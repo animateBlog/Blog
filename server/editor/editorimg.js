@@ -9,7 +9,7 @@ var strSrc = '';
 var storage = multer.diskStorage({
     //上传的文件夹
     destination: (req, file, cb) => {
-        cb(null, '../images/essayimg');
+        cb(null, '../src/images/essayimg');
     },
     //保存的名字
     filename: (req, file, cb) => {
@@ -27,11 +27,14 @@ router.post('/',uploads.single('selfile'), function (req, res) {
     res.append("Access-Control-Allow-Credentials", "true");
     // 数据库修改user_head
     // console.log("images/userimg/" + strSrc);
-    connection().query('insert into essayinfo SET e_img="images/essayimg/'+strSrc+'",user_id=1', function (error, results, fields) {
+    var str='images/essayimg/'+strSrc;
+    connection().query('insert into essayinfo SET e_img="'+str+'"', function (error, results, fields) {
         if (error) throw error;
-        createConnection("select u_id from essayinfo where e_img=images/essayimg/"+strSrc,function(result){
-            console.log(result);
-            // res.send('添加图片成功');
+        // console.log(str)
+        connection().query('select * from essayinfo where e_img="'+str+'"', function (error1, results1, fields1) {
+            if (error1) throw error1;
+             console.log(results1[0]);
+            res.send(results1[0]);
         });
     });
 });

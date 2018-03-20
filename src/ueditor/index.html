@@ -51,6 +51,9 @@
             border-radius: 4px;
             margin: 30px auto;
             font-size: 18px;
+            line-height: 40px;
+            text-align: center;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -62,7 +65,7 @@
             <input type="text" id="title">
             <p>介绍文章:</p>
             <textarea name="markText" id="markText" style="width: 410px; font-size: 16px; line-height: 23px; font-family: 微软雅黑;  
-                max-width: 400px; height: 150px; max-height: 150px; outline: 0;">asaass</textarea>
+                max-width: 400px; height: 150px; max-height: 150px; outline: 0;"></textarea>
             <p>请上传一张图片:</p>
             <form id="uploadForm">
                 <input type="file" id="pic" name="selfile">
@@ -71,12 +74,10 @@
         </div>
         <script id="editor" type="text/plain" style="width:1088px;height:500px; margin: 0px 15px"></script>
     </div>
-    <div id="btns">
-        <div style="width: 100%">
-            <button onclick="getContent()" id="commit">发表</button>
-        </div>
+    <div style="width: 100%">
+        <a href="javascript:void(0)" id="commit">发表</a>
     </div>
-    <script src="jquery.js"></script>
+    <script src="jquery-3.3.1.js"></script>
 
     <script type="text/javascript">
         //实例化编辑器
@@ -103,43 +104,59 @@
         function getAllHtml() {
             alert(UE.getEditor('editor').getAllHtml())
         }
-        function getContent() {
-            var arr = [];
-            arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-            arr.push("内容为：");
-            arr.push(UE.getEditor('editor').getContent());
-            // $.ajax({
-            //     url: "120.79.203.248:9000/editor",
-            //     type: "post",
-            //     data: {
-            //         e_title: $("#title").val(),
-            //         e_describe: $("#markText").text(),
-            //         e_content: UE.getEditor('editor').getContent(),
-            //         u_name: "liuchuzhang"
-            //     },
-            // }).done(function (res) {
-            //     console.log(res);
-            //     if (res.status == 1) {
-            //         $.ajax({
-            //             headers: {'Cookie' : document.cookie },
-            //             url: "120.79.203.248:9000/editorimg",
-            //             type: "post",
-            //             data: new FormData($('#uploadForm')[0]),
-            //         }).done(function (res) {
-            //             console.log(res);
-            //         })
-            //     }
-            // })
-            console.log(document.cookie);
+        $("#commit").on("click", function () {
             $.ajax({
                 url: "http://localhost:9000/editorimg",
                 type: "post",
                 data: new FormData($('#uploadForm')[0]),
+                processData: false,
+                contentType: false,
             }).done(function (res) {
-                console.log(res);
+                //res[0].e_id
+                $.ajax({
+                    url: "http://localhost:9000/editor",
+                    type: "POST",
+                    data: {
+                        e_title: $("#title").val(),
+                        e_describe: $("#markText").val(),
+                        e_content: UE.getEditor('editor').getContent(),
+                        e_id: res.e_id
+                    },
+                    dataType:"JSON"
+                }).then(function (data) {
+                    console.log(data)
+                    if (data.status == 1) {
+                        alert("发表成功");
+                        window.location.href="../index.html";
+                    }
+                })
             })
 
-        }
+
+        })
+        // $.ajax({
+        //     url: "120.79.203.248:9000/editor",
+        //     type: "post",
+        //     data: {
+        //         e_title: $("#title").val(),
+        //         e_describe: $("#markText").text(),
+        //         e_content: UE.getEditor('editor').getContent(),
+        //         u_name: "liuchuzhang"
+        //     },
+        // }).done(function (res) {
+        //     console.log(res);
+        //     if (res.status == 1) {
+        //         $.ajax({
+        //             headers: {'Cookie' : document.cookie },
+        //             url: "120.79.203.248:9000/editorimg",
+        //             type: "post",
+        //             data: new FormData($('#uploadForm')[0]),
+        //         }).done(function (res) {
+        //             console.log(res);
+        //         })
+        //     }
+        // })
+        // console.log(document.cookie);
         function getPlainTxt() {
             var arr = [];
             arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
