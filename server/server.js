@@ -9,8 +9,11 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
-var searchuserinfo= require("./editor/editor.js")
-app.use('/editor', searchuserinfo);//注册模块
+var editor= require("./editor/editor.js")
+app.use('/editor', editor);//富文本编辑器文本插入模块
+
+var editorimg= require("./editor/editorimg.js")
+app.use('/editorimg', editorimg);//富文本编辑器图片插入模块
 
 app.set('jsonp callback name', 'JSON_CALLBACK');
 app.listen(9000);
