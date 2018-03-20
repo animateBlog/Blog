@@ -55,12 +55,12 @@
     <br>
     <form class="am-form" id="log-form">
       <div class="am-input-group am-radius am-animation-slide-left">       
-        <input type="email" id="doc-vld-email-2-1" class="am-radius" data-validation-message="请输入正确邮箱地址" placeholder="邮箱" required/>
+        <input type="text" data-validation-message="用户名不能为空" placeholder="用户名" required id="uname"/>
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-user am-icon-sm am-icon-fw"></i></span>
       </div>      
       <br>
       <div class="am-input-group am-animation-slide-left log-animation-delay">       
-        <input type="text" class="am-form-field am-radius log-input" placeholder="密码" minlength="11" required>
+        <input type="password" class="am-form-field am-radius log-input" placeholder="密码" minlength="8" required id="upwd" />
         <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
       </div>      
       <br>
@@ -90,7 +90,9 @@
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
+<script src="js/lib/jquery-cookie-1.0.0.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/app.js"></script>
+<script src="js/login.js"></script>
 </body>
 </html>
