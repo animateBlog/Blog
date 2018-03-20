@@ -1,0 +1,9 @@
+.am-form .first-input #name_msg{
+    width: 100%;
+    height:27px;
+    background:#dc504c;
+    position: absolute;
+    left: 0;
+    top: 37px;
+    display: none;
+}

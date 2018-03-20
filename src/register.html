@@ -38,6 +38,7 @@
 
   <link rel="stylesheet" href="assets/css/amazeui.min.css">
   <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
@@ -58,11 +59,12 @@
         <h1 class="log-title am-animation-slide-top">Animate Blog</h1>
         <br>
         <form class="am-form" id="log-form">
-          <div class="am-input-group am-radius am-animation-slide-left">
-            <input type="text" class="am-radius" data-validation-message="请输入正确用户名" placeholder="用户名" required/>
+          <div class="am-input-group am-radius am-animation-slide-left first-input">
+            <input type="text" class="am-radius" id="username" placeholder="用户名" required />
             <span class="am-input-group-label log-icon am-radius">
               <i class="am-icon-user am-icon-sm am-icon-fw"></i>
             </span>
+            <div id="name_msg"></div>
           </div>
           <br>
           <div class="am-input-group am-radius am-animation-slide-left">
@@ -70,10 +72,11 @@
             <span class="am-input-group-label log-icon am-radius">
               <i class="am-icon-at am-icon-sm am-icon-fw"></i>
             </span>
+            <!-- <div id="name_msg"></div> -->
           </div>
           <br>
           <div class="am-input-group am-animation-slide-left log-animation-delay">
-            <input type="password" id="log-password" class="am-form-field am-radius log-input" placeholder="密码" minlength="11" required>
+            <input type="password" id="log-password" class="am-form-field am-radius log-input" placeholder="密码" minlength="8" maxlength="16" required>
             <span class="am-input-group-label log-icon am-radius">
               <i class="am-icon-lock am-icon-sm am-icon-fw"></i>
             </span>
@@ -87,7 +90,7 @@
             </span>
           </div>
           <br>
-          <button type="submit" class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b">注 册</button>
+          <button type="submit" class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b" id="reg-btn">注 册</button>
           <br>
           <div class="am-btn-group am-animation-slide-bottom log-animation-delay-b">
             <p>支持第三方注册</p>
@@ -118,6 +121,7 @@
 <![endif]-->
   <script src="assets/js/amazeui.min.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="js/register.js"></script>
 </body>
 
 </html>

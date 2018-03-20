@@ -10,8 +10,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 var searchuserinfo= require("./editor/editor.js")
-app.use('/editor', searchuserinfo);//注册模块
+app.use('/editor', searchuserinfo);
+
+var reglog= require("./router/reglog.js")
+app.use('/reglog', reglog);//登录注册模块
+
 
 app.set('jsonp callback name', 'JSON_CALLBACK');
-app.listen(9000);
+app.listen(3456);
 console.log("开启服务器");
