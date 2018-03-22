@@ -3,7 +3,6 @@ var express = require('express');
 var router = express.Router();
 var querystring = require('querystring');//字符串转对象
 var mysql = require('mysql');
-var connection = require("./../createsql.js");
 var createConnection= require("./../createConnection.js")
 var strSrc = '';
 var storage = multer.diskStorage({
@@ -27,12 +26,8 @@ router.post('/',uploads.single('selfile'), function (req, res) {
     res.append("Access-Control-Allow-Credentials", "true");
     // console.log("images/userimg/" + strSrc);
     var str='images/essayimg/'+strSrc;
-    connection().query('insert into essayinfo SET e_img="'+str+'"', function (error, results, fields) {
-        if (error) throw error;
-        // console.log(str)
-        connection().query('select * from essayinfo where e_img="'+str+'"', function (error1, results1, fields1) {
-            if (error1) throw error1;
-             console.log(results1[0]);
+    createConnection('insert into essayinfo SET e_img="'+str+'"', function (results) {
+        createConnection('select * from essayinfo where e_img="'+str+'"', function (results1) {
             res.send(results1[0]);
         });
     });

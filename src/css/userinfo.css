@@ -1,0 +1,22 @@
+.msg_content {
+  overflow: hidden;
+  height: auto;
+}
+.msg_left img {
+  height: 100px;
+}
+.msg_right {
+  height: auto;
+}
+.msg_msg .msg_newmsg {
+  overflow: hidden;
+}
+.msg_msg .msg_newmsg h5 {
+  margin: 0;
+}
+.msg_msg .msg_newmsg p {
+  margin: 0;
+}
+.msg_msg .msg_newmsg p span {
+  float: right;
+}

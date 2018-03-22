@@ -1,0 +1,19 @@
+.body_content {
+  width: 100%;
+  height: 100%;
+}
+.body_content .body_left {
+  float: left;
+  width: 60% ;
+}
+.body_content .body_right {
+  float: right;
+  width: 40%;
+}
+.am-u-md-pull-4 {
+  right: 0;
+  width: 100%;
+}
+.am-form-group{
+	padding-top: 20px;
+}

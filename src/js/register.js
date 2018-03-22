@@ -38,11 +38,12 @@ $("#log-form")[0].onsubmit=function () {
                 u_email:$("#doc-vld-email-2-1").val()
             },
             success:function (res) {  
-                alert(res.msg);
+                if(res.status==1){
+                    alert(res.msg);
+                }
                 bflag1=false;
             }
         })
     }
-
     return false;
 }

@@ -4,14 +4,11 @@ var router = express.Router();
 var querystring = require('querystring');//字符串转对象
 var mysql = require('mysql');
 var createConnection = require("./../createConnection.js");
-router.get('/', function (req, res) {
+router.post('/',function (req, res) {
     res.append("Access-Control-Allow-Origin", "*");
     res.append("Access-Control-Allow-Credentials", "true");
-    // console.log("images/userimg/" + strSrc);
-    createConnection('select * from essayinfo', function (results) {
-        res.json({
-            results
-        })
+    createConnection(`update userinfo set u_name="${req.body.u_name}",u_email="${req.body.u_email}",u_introduce="${req.body.u_introduce}" where u_name="${req.body.u_name}"`, function (results) {
+        res.send("修改成功");
     })
 });
 module.exports = router;

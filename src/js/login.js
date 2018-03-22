@@ -11,10 +11,14 @@ $("#log-form")[0].onsubmit=function () {
             u_name:$("#uname").val(),
             u_pwd:$("#upwd").val()
         }
-        $.setCookie("userinfo",JSON.stringify(obj));
-        alert(res.msg);
-        window.location.href="index.html";
+        if(res.status==1){
+            $.setCookie("userinfo",JSON.stringify(obj));
+            alert(res.msg);
+            window.location.href="index.html"; 
+        }else{
+            alert(res.msg);
+        }
+        
     })
-
     return false;
 }

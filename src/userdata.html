@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>animateBlog</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/changuser.css"/>
+</head>
+	<body id="blog">
+		<header id="header"></header>
+		<!--主体,名称,个人简介等-->
+		<div class="body_content" style="width: 1200px; margin:0 auto;">
+			<div class="body_left">
+				<div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+					<div class="am-cf am-padding am-padding-bottom-0">
+						<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">修改个人资料</strong> / <small>Personal information</small></div>
+					</div>
+					<form class="am-form am-form-horizontal">
+						<div class="am-form-group">
+							<label for="user-name" class="am-u-sm-3 am-form-label">昵称/ Name</label>
+							<div class="am-u-sm-9">
+								<input type="text" id="user-name" placeholder="昵称 / Name">
+								<small>输入你的名字，让我们记住你。</small>
+							</div>
+						</div>
+						<div class="am-form-group">
+							<label for="user-email" class="am-u-sm-3 am-form-label">电子邮件 / Email</label>
+							<div class="am-u-sm-9">
+								<input type="email" id="user-email" placeholder="输入你的电子邮件 / Email">
+								<small>邮箱你懂得...</small>
+							</div>
+						</div>
+						<div class="am-form-group">
+							<label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
+							<div class="am-u-sm-9">
+								<textarea class="" rows="5" id="user-intro" placeholder="输入个人简介"></textarea>
+								<small>250字以内写出你的一生...</small>
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<div class="am-u-sm-9 am-u-sm-push-3">
+								<button type="button" class="am-btn am-btn-primary" id="saveinfo">保存修改</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="body_right">
+
+				<div class="am-panel am-panel-default">
+					<div class="am-panel-bd">
+						<div class="am-g">
+							<div class="am-u-md-4">
+								<img class="am-img-circle am-img-thumbnail userimg" src="images/noheadpic.jpg" alt="" />
+							</div>
+							<div class="am-u-md-8">
+								<p>你可以使用
+									<a href="#">gravatar.com</a>提供的头像或者使用本地上传头像。 </p>
+								<form class="am-form" id="uploadForm">
+									<div class="am-form-group">
+										<input type="file" id="user-pic" name="selfile">
+										<p class="am-form-help">请选择要上传的文件...</p>
+										<button type="button" class="am-btn am-btn-primary am-btn-xs" id="saveimg">保存</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+ <footer id="footer"></footer>
+
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="js/lib/jquery-cookie-1.0.0.js"></script>
+    <!--<![endif]-->
+    <!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+    <script src="assets/js/amazeui.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/userdata.js"></script>
+	</body>
+</html>

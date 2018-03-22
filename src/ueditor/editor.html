@@ -113,7 +113,7 @@
             // console.log($("input[type='file']").val(),$("#title").val(),$("#markText").val())
             if ($("input[type='file']").val() == "" || $("#title").val() == "" || $("#markText").val() == '') {
                 //            console.log(document.cookie)
-                alert("请填写完整或上传图片")
+                alert("请填写完整信息或上传图片")
             } else {
                 $.ajax({
                     url: "http://localhost:9000/editorimg",
@@ -139,10 +139,8 @@
                             dataType: "JSON"
                         }).then(function (data) {
                             console.log(data)
-                            if (data.status == 1) {
-                                alert("发表成功");
-                                window.location.href = "index.html";
-                            }
+                            alert("发表成功");
+                            window.location.href = "../index.html";
                         })
                     } else {
                         alert("你还没有登录!请登录");

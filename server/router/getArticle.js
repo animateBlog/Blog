@@ -4,15 +4,13 @@ var router = express.Router();
 var querystring = require('querystring');//字符串转对象
 var mysql = require('mysql');
 var fs=require("fs");
-var connection = require("./../createsql.js");
+var createConnection = require("./../createConnection.js");
 router.post('/', function (req, res) {
     res.append("Access-Control-Allow-Origin", "*");
     res.append("Access-Control-Allow-Credentials", "true");
     // console.log("images/userimg/" + strSrc);
-    connection().query('select * from essayinfo where e_id="' + req.body.e_id + '"', function (error, results, fields) {
-        if (error) throw error;
-        // console.log(str)
-        
+    createConnection('select * from essayinfo where e_id="' + req.body.e_id + '"', function (results) {
+        // console.log(results[0])
         var data = '';
         var readerStream = fs.createReadStream("../src/txt/"+results[0].e_content)
         readerStream.on('data', function (chunk) {
@@ -32,6 +30,6 @@ router.post('/', function (req, res) {
             })
         });
         
-    });
+    })
 });
 module.exports = router;
