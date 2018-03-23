@@ -5,7 +5,7 @@ $(function () {
         dataType: "JSON"
     }).then(function (data) {
         console.log(data)
-        var res = data["results"];
+        var res = data["results"].reverse();
         var obj = JSON.parse($.getCookie("userinfo") || "{}");
         // console.log(JSON.stringify(obj))
         if (JSON.stringify(obj) == "{}") {
@@ -31,7 +31,7 @@ $(function () {
             </p>
         </div>
     </article>`
-                $("#articleList").html(str + $("#articleList").html());
+                $("#articleList").html($("#articleList").html()+str);
             }
         } else {
             $("#aside").load("./aside.html");
@@ -58,7 +58,7 @@ $(function () {
                         </p>
                     </div>
                 </article>`
-                    $("#articleList").html(str + $("#articleList").html());
+                    $("#articleList").html($("#articleList").html()+str);
                 }
             }
             $(".prev").on("click", function () {
@@ -96,6 +96,15 @@ $(function () {
                             $("#articleList").html($("#articleList").html() + str);
                         }
                     }
+                    $(".gouser").on("click", function () {
+                        var strUsername = $(this).html().substr(1);
+                        window.location.href = "userinfo.html?actionname=" + strUsername;
+                    })
+                    $(".article-title").on("click", function () {
+                        var str = $(this).parents(".articless").attr("data-info");
+                        // console.log(str);
+                        window.location.href = "article.html?articleid=" + str;
+                    })
                 }
             })
 
@@ -135,12 +144,21 @@ $(function () {
                             console.log(str);
                         }
                     }
+                    $(".gouser").on("click", function () {
+                        var strUsername = $(this).html().substr(1);
+                        window.location.href = "userinfo.html?actionname=" + strUsername;
+                    })
+                    $(".article-title").on("click", function () {
+                        var str = $(this).parents(".articless").attr("data-info");
+                        // console.log(str);
+                        window.location.href = "article.html?articleid=" + str;
+                    })
                 }
             })
 
-            $(".gouser").on("click",function(){
-                var strUsername=$(this).html().substr(1);
-                window.location.href="userinfo.html?actionname="+strUsername;
+            $(".gouser").on("click", function () {
+                var strUsername = $(this).html().substr(1);
+                window.location.href = "userinfo.html?actionname=" + strUsername;
             })
         }
 
@@ -150,36 +168,7 @@ $(function () {
             window.location.href = "article.html?articleid=" + str;
         })
     })
-
-    function pageNum() {
-        arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-        pageNum = 6;
-        $(".prev").on("click", function () {
-            var str = $(this).attr("data-info") + 1;//现在的页数
-            for (var i = pageNum * str; i < arr.length; i++) {
-                ////
-            }
-        })
-
-        $(".next").on("click", function () {
-        })
-    }
-    $(window).load(() => {
-        var obj = JSON.parse($.getCookie("userinfo") || "{}");
-        if(JSON.stringify(obj)!="{}"){
-            $.ajax({
-                url: "http://localhost:9000/showUserByName",
-                type: "post",
-                data:{
-                    u_name:obj.u_name,
-                }
-            }).then((data) => {
-                var res=data["results"][0];
-                $(".edituserimg").attr("src",res.u_head);
-                $(".ab_uname").html(res.u_name);
-                $(".ab_uintroduce").html(res.u_introduce)
-            })
-            $(".userUpdate").attr("href","userdata.html");
-        }
+    $(document).ready(function () {
+        
     })
 })

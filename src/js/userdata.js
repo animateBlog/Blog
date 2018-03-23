@@ -12,7 +12,10 @@ $(function () {
                 $("#user-name").val(res.u_name);
                 $("#user-email").val(res.u_email);
                 $("#user-intro").val(res.u_introduce);
-                $(".userimg").attr("src", res.u_head);
+                if(res.u_head){
+                    $(".userimg").attr("src", res.u_head);
+                }
+                
             }
         })
         $("#saveimg").on("click", function () {

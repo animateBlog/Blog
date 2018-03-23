@@ -122,7 +122,6 @@
                     processData: false,
                     contentType: false,
                 }).done(function (res) {
-                    //res[0].e_id
                     var objCookie = JSON.parse($.getCookie("userinfo") || "{}");
                     if (JSON.stringify(objCookie) != "{}") {
                         $.ajax({
@@ -135,12 +134,12 @@
                                 e_id: res.e_id,
                                 u_name: objCookie.u_name
                             },
-                            crossDomain: true,
                             dataType: "JSON"
                         }).then(function (data) {
                             console.log(data)
                             alert("发表成功");
-                            window.location.href = "../index.html";
+                            window.parent.location.href='http://127.0.0.1:5500/Blog/src/index.html';
+                            //window.opener.location.href = "index.html";
                         })
                     } else {
                         alert("你还没有登录!请登录");

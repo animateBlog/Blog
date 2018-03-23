@@ -15,11 +15,13 @@
             <h2 class="blog-text-center blog-title">
                 <span>About ME</span>
             </h2>
-            <a href="javascript:void(0)" class="userUpdate"><img src="assets/i/f14.jpg" alt="about me" class="blog-entry-img edituserimg"></a>
-            <p class="ab_uname">liuchuzhang</p>
+            <a href="userdata.html" class="userUpdate">
+                <img src="assets/i/f14.jpg" alt="about me" class="blog-entry-img edituserimg">
+            </a>
+            <p class="ab_uname">外星人</p>
             <p class="ab_uintroduce">
-                我是一个外星人，我没有过多的话语来介绍自己.
-            我不想成为一个庸俗的人。十年百年后，当我们死去，质疑我们的人同样死去，后人看到的是裹足不前、原地打转的你，还是一直奔跑、走到远方的我？</p>
+                我是一个外星人，我没有过多的话语来介绍自己. 我不想成为一个庸俗的人。十年百年后，当我们死去，质疑我们的人同样死去，后人看到的是裹足不前、原地打转的你，还是一直奔跑、走到远方的我？
+            </p>
         </div>
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title">
@@ -56,28 +58,59 @@
                 <a href="javascript:void(0);" class="blog-tag">开源前端框架</a>
             </div>
         </div>
-        <div class="blog-sidebar-widget blog-bor">
+        <div class="blog-sidebar-widget blog-bor" style="height:300px; padding-bottom:50px">
             <h2 class="blog-title">
-                <span>么么哒</span>
+                <span>百度Map</span>
             </h2>
-            <ul class="am-list">
-                <li>
-                    <a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a>
-                </li>
-                <li>
-                    <a href="#">我把最深沉的秘密放在那里。</a>
-                </li>
-                <li>
-                    <a href="#">你不懂我，我不怪你。</a>
-                </li>
-                <li>
-                    <a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a>
-                </li>
-            </ul>
+            <div id="allmap" width="100" height="100"></div>
         </div>
     </div>
     <!-- 个人信息 end -->
-
+    <script src="js/lib/jquery-3.3.1.js"></script>
+    <script src="js/lib/jquery-cookie-1.0.0.js"></script>
 </body>
 
 </html>
+<script>
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(116.331398, 39.897445);
+    map.centerAndZoom(point, 12);
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            //  alert('您的位置：'+r.point.lng+','+r.point.lat);
+        }
+        else {
+            // alert('failed'+this.getStatus());
+        }
+    }, { enableHighAccuracy: true })
+
+    $(function () {
+
+        var obj = JSON.parse($.getCookie("userinfo") || "{}");
+        if (JSON.stringify(obj) != "{}") {
+            $.ajax({
+                url: "http://localhost:9000/showUserByName",
+                type: "post",
+                data: {
+                    u_name: obj.u_name,
+                }
+            }).then((data) => {
+                var res = data["results"][0];
+                console.log(res)
+                if (res.u_head) {
+                    $(".edituserimg").attr("src", res.u_head);
+                }
+                $(".ab_uname").html(res["u_name"]);
+                $(".ab_uintroduce").html(res["u_introduce"])
+            })
+            $(".userUpdate").attr("href", "userdata.html");
+        } else {
+            $(".userUpdate").attr("href", "userdata.html");
+        }
+    })
+</script>

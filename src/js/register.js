@@ -40,6 +40,7 @@ $("#log-form")[0].onsubmit=function () {
             success:function (res) {  
                 if(res.status==1){
                     alert(res.msg);
+                    window.location.href="index.html";
                 }
                 bflag1=false;
             }
