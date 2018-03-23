@@ -12,10 +12,12 @@ $(function () {
             var res = data["obj"];
             $(".article_title").html(res.e_title);
             $(".article_uname").html(res.u_name);
+            $(".article_uname").attr("href","userinfo.html?actionname="+encodeURIComponent(res.u_name));
             $(".article_time").html(res.e_time);
             var str = res.e_content.substr(0, res.e_content.length - 6)
             $(".article_content").html(str);
             $(".con_img").attr("src", res.e_img);
+            
         })
         $.ajax({
             url: "http://localhost:9000/getCommentById",

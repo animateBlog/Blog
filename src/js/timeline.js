@@ -63,7 +63,7 @@ $(function () {
                             var strHtml = `
                         <li>
                         <span class="am-u-sm-8 am-u-md-6 timeline-span">
-                            <a href="#">${obj[key][j][i].e_title}</a>
+                            <a href="article.html?articleid=${obj[key][j][i].e_id}">${obj[key][j][i].e_title}</a>
                         </span>
                         <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">${obj[key][j][i].e_time}</span>
                         <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">${obj[key][j][i].u_name}</span>

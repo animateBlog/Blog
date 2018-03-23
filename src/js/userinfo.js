@@ -1,5 +1,5 @@
 $(function(){
-    var str = window.location.search.split("=")[1];
+    var str = decodeURIComponent(window.location.search.split("=")[1]);
     if(str){
         $.ajax({
             url: "http://localhost:9000/showUserByName",

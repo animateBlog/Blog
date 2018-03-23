@@ -98,7 +98,7 @@ $(function () {
                     }
                     $(".gouser").on("click", function () {
                         var strUsername = $(this).html().substr(1);
-                        window.location.href = "userinfo.html?actionname=" + strUsername;
+                        window.location.href = "userinfo.html?actionname=" + encodeURIComponent(strUsername);
                     })
                     $(".article-title").on("click", function () {
                         var str = $(this).parents(".articless").attr("data-info");
@@ -146,7 +146,7 @@ $(function () {
                     }
                     $(".gouser").on("click", function () {
                         var strUsername = $(this).html().substr(1);
-                        window.location.href = "userinfo.html?actionname=" + strUsername;
+                        window.location.href = "userinfo.html?actionname=" + encodeURIComponent(strUsername);
                     })
                     $(".article-title").on("click", function () {
                         var str = $(this).parents(".articless").attr("data-info");
@@ -158,7 +158,8 @@ $(function () {
 
             $(".gouser").on("click", function () {
                 var strUsername = $(this).html().substr(1);
-                window.location.href = "userinfo.html?actionname=" + strUsername;
+                alert(encodeURIComponent(strUsername))
+                window.location.href = "userinfo.html?actionname=" + encodeURIComponent(strUsername);
             })
         }
 
