@@ -16,7 +16,6 @@ router.post("/register",(req,res)=>{
         u_pwd:req.body.u_pwd,
         u_email:req.body.u_email
     },(error,results,fields)=>{
-        conn.end();
         res.json({
             status:1,
             msg:"注册成功"
@@ -26,7 +25,6 @@ router.post("/register",(req,res)=>{
 router.post("/unameIsExist",(req,res)=>{
     res.append("Access-Control-Allow-Origin","*");
     conn.query("SELECT*FROM userinfo WHERE u_name='"+req.body.u_name+"'",function(error,results,fields){
-        conn.end();
         if (results.length>0) {
             res.json({
                 status:0,
@@ -44,7 +42,6 @@ router.post("/unameIsExist",(req,res)=>{
 router.post("/login",(req,res)=>{
     res.append("Access-Control-Allow-Origin","*");
     conn.query("SELECT*FROM userinfo WHERE u_name='"+req.body.u_name+"'",(error,results,fields)=>{
-        // conn.end();
         if (results.length>0&&results[0].u_pwd==req.body.u_pwd) {
             res.json({
                 status:1,
